@@ -9,6 +9,7 @@ import Statics from "@/components/statics";
 import Testimonial from "@/components/testimonial";
 import { cardData } from "@/utils/cardData";
 import { fetchCards } from "../utils/functionsForData"
+import TestimonialCard from "@/components/testimonialDemo";
 const dataCard = [
   {
     title: "Exploring the Mountains",
@@ -85,6 +86,37 @@ const dataProducts = [
   },
 ];
 
+
+const testimonialsData = [
+  {
+    text: "This is an amazing product! I can't believe the quality.",
+    icon: 'path/to/icon1.png', // Replace with actual path to image
+    name: 'John Doe',
+    time: '1 month ago',
+  },
+  {
+    text: "Fantastic service! Highly recommend it to everyone.",
+    icon: 'path/to/icon2.png', // Replace with actual path to image
+    name: 'Jane Smith',
+    time: '2 weeks ago',
+  },
+  {
+    text: "I had a great experience, will definitely buy again.",
+    icon: 'path/to/icon3.png', // Replace with actual path to image
+    name: 'Alice Johnson',
+    time: '3 weeks ago',
+  },
+  {
+    text: "Best purchase I've made in a long time!",
+    icon: 'path/to/icon4.png', // Replace with actual path to image
+    name: 'Bob Brown',
+    time: '5 days ago',
+  },
+];
+
+// In your main component, render the TestimonialCard with testimonialsData
+
+
 // Example usage in your component
 
 
@@ -105,6 +137,8 @@ export default async function Home() {
       <Products cardData={dataProducts} />
 
       <Testimonial cardData={cardData} />
+      <hr/>
+      <TestimonialCard testimonials={testimonialsData} />
       <Footer />
     </>
   );
