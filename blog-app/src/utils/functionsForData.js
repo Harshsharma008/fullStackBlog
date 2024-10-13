@@ -5,7 +5,8 @@ export async function fetchCards() {
         }
     }
     try {
-        const res = await fetch("http://127.0.0.1:1337/api/cards");
+        const res = await fetch("http://localhost:1337/api/blog-details");
+        console.log(res, "in resss")
         const response = await res.json();
         return response;
     } catch (error) {

@@ -12,28 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "BigTitle": {
+    "Category": {
       "type": "string"
     },
-    "mediumTitle": {
-      "type": "string"
-    },
-    "smallTitle": {
-      "type": "string"
-    },
-    "bigDesc": {
-      "type": "text"
-    },
-    "mediumDesc": {
-      "type": "text"
-    },
-    "smallDesc": {
-      "type": "text"
-    },
-    "table": {
-      "type": "blocks"
-    },
-    "image": {
+    "Image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -46,6 +28,24 @@
     },
     "jsondata": {
       "type": "json"
+    },
+    "BlogDetails": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor",
+      "required": true
+    },
+    "Date": {
+      "type": "date"
+    },
+    "Time": {
+      "type": "time"
+    },
+    "Excerpt": {
+      "type": "text"
     }
   }
 }

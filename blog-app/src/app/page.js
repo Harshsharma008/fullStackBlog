@@ -1,3 +1,4 @@
+"use client "
 import Blog from "@/components/blog";
 import CardCarousel from "@/components/dynamic_card";
 import Footer from "@/components/footer";
@@ -123,7 +124,7 @@ const testimonialsData = [
 
 export default async function Home() {
   const response = await fetchCards(); // Assuming fetchCards is your fetch function
-  const cardDatas = response.data;
+  const cardDatas = response;
   console.log(cardDatas, "heyy harsh ")
   return (
     <>
@@ -133,12 +134,12 @@ export default async function Home() {
 
       <Statics />
       <Blog />
-      <SliderCard cardData={cardDatas } />
+      {/* <SliderCard cardData={cardDatas } /> */}
       <Products cardData={dataProducts} />
 
-      <Testimonial cardData={cardData} />
+      <Testimonial cardData={testimonialsData} />
       <hr/>
-      <TestimonialCard testimonials={testimonialsData} />
+      
       <Footer />
     </>
   );

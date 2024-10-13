@@ -497,15 +497,21 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    BigTitle: Schema.Attribute.String;
-    mediumTitle: Schema.Attribute.String;
-    smallTitle: Schema.Attribute.String;
-    bigDesc: Schema.Attribute.Text;
-    mediumDesc: Schema.Attribute.Text;
-    smallDesc: Schema.Attribute.Text;
-    table: Schema.Attribute.Blocks;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Category: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     jsondata: Schema.Attribute.JSON;
+    BlogDetails: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+    Date: Schema.Attribute.Date;
+    Time: Schema.Attribute.Time;
+    Excerpt: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -515,6 +521,48 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
+  };
+}
+
+export interface ApiBlogDetailBlogDetail extends Struct.CollectionTypeSchema {
+  collectionName: 'blog_details';
+  info: {
+    singularName: 'blog-detail';
+    pluralName: 'blog-details';
+    displayName: 'BlogDetail';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    harshcustom: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    Title: Schema.Attribute.Text;
+    Excerpt: Schema.Attribute.Text;
+    DateTime: Schema.Attribute.DateTime;
+    ImageForCard: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-detail.blog-detail'
+    >;
   };
 }
 
@@ -546,6 +594,38 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::card.card'>;
+  };
+}
+
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Type: Schema.Attribute.String;
+    blog_details: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-detail.blog-detail'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
   };
 }
 
@@ -949,7 +1029,9 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
+      'api::blog-detail.blog-detail': ApiBlogDetailBlogDetail;
       'api::card.card': ApiCardCard;
+      'api::category.category': ApiCategoryCategory;
       'api::demo.demo': ApiDemoDemo;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

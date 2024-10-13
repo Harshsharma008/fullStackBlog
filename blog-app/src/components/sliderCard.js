@@ -75,14 +75,14 @@ function SliderCard({ cardData }) {
                   {card.Category}
                 </h2>
                 <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                  {card.title}
+                  {card.Title}
                 </h1>
-                <p className="leading-relaxed mb-3 flex-grow">{card.ShortDescription}</p>
+                <p className="leading-relaxed mb-3 flex-grow">{card.Excerpt}</p>
                 {/* Move the author and date to the bottom */}
                 <div className="flex justify-between items-center mt-auto">
-                  <span className="text-gray-500 text-sm">{card.Author}</span>
+                  <span className="text-gray-500 text-sm">Shubham Patodia</span>
                   <span className="text-gray-500 text-sm">
-                    {new Date(card.Createdat).toLocaleDateString()}
+                    {new Date(card.DateTime).toLocaleDateString()}
                   </span>
                 </div>
               </div>

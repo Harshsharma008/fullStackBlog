@@ -1,0 +1,49 @@
+.container {
+    margin: auto;
+}
+
+.content {
+    margin-top: 50px;
+    /* max-width: 00px; */
+    /* Limit content width */
+    width: 100%;
+    /* Full width */
+    text-align: left;
+}
+
+/* Center images and set size */
+img {
+    display: block;
+    /* Ensure it's treated as a block element */
+    margin: 20px auto;
+    /* Center the image with margin */
+    width: 400px;
+    /* Set width */
+    height: 400px;
+    /* Set height */
+}
+
+/* Center tables */
+table {
+    justify-content: center;
+    /* Center table */
+    border-collapse: collapse;
+    /* Collapsing borders */
+    width: 100%;
+    /* Full width */
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    /* Border for table cells */
+    padding: 8px;
+    /* Padding for table cells */
+    text-align: center;
+    /* Center text in table */
+}
+
+th {
+    background-color: #f2f2f2;
+    /* Light grey background for header */
+}

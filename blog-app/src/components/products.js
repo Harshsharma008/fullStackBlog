@@ -58,18 +58,7 @@ function Products({ cardData }) {
           </div>
         </div>
       </section>
-      {/* <section className='p-10'>
-            <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
-        <div class="rounded-lg h-64 overflow-hidden">
-          <img alt="content" className="object-cover rounded-lg object-center h-full w-full " src="/thumbnail.png"/>
-        </div>
-        <h5 className='text-sm font-bold mt-2 ml-1'> color</h5>
-        <h2 class="text-xl font-medium title-font text-gray-900 ">Shooting Stars</h2>
-        <p class="text-base leading-relaxed mt-2">Swag shoivdigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.</p>
-       
-    
-      </div>
-            </section> */}
+      
 
       <section className="p-10">
         <Carousel className="p-10">

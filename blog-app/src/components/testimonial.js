@@ -4,38 +4,39 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick"; // Make sure to install react-slick and slick-carousel
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TestimonialCard from "./testimonialDemo";
 
-function Testimonial({ cardData }) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+function Testimonial({ testimonialsData }) {
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
 
   const [startAnimation, setStartAnimation] = useState(false);
 
@@ -78,29 +79,7 @@ function Testimonial({ cardData }) {
           </div>
         </div>
         <div className="container mx-auto px-5">
-          <Slider {...settings}>
-            {cardData.map((card, index) => (
-              <div key={index} className="flex flex-col items-center p-4 gap-2">
-                <div className="border-2 border-gray-200 bg-white overflow-hidden border-opacity-60 rounded-xl h-64 w-64 flex flex-col justify-start items-start p-4">
-                  <h1 className="title-font text-lg font-bold text-black text-left mb-3">
-                    {card.title}
-                  </h1>
-                  <p
-                    className="leading-relaxed mb-3 text-left overflow-hidden"
-                    style={{
-                      display: "-webkit-box",
-                      WebkitLineClamp: 7, // Limit to 3 lines
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {truncateText(card.description, 90)} {/* Limit to 50 words */}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </Slider>
+          <TestimonialCard testimonials={testimonialsData} />
         </div>
       </section>
     </div>
